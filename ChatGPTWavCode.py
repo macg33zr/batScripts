@@ -1,58 +1,52 @@
-import wave
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.fftpack import fft
+from scipy.io import wavfile
 
-def get_frequency(filename, freq_min, freq_max):
-    with wave.open(filename, "rb") as wave_file:
-        # Get the sample rate and number of frames
-        sample_rate = wave_file.getframerate()
-        num_frames = wave_file.getnframes()
-        
-        # Read the audio data from the wave file
-        audio_data = wave_file.readframes(num_frames)
-        audio_data = np.frombuffer(audio_data, dtype=np.int16)
-        
-        # Compute the FFT of the audio data
-        fft_data = fft(audio_data)
-        fft_data = np.abs(fft_data)
-        fft_freqs = np.fft.fftfreq(len(fft_data), 1/sample_rate)
-        
-        # Get the indices of the desired frequency range
-        start_idx = np.searchsorted(fft_freqs, freq_min)
-        end_idx = np.searchsorted(fft_freqs, freq_max)
-        
-        # Get the frequency with the highest amplitude
-        max_idx = np.argmax(fft_data[start_idx:end_idx])
-        max_frequency = fft_freqs[start_idx + max_idx]
-        
-        return max_frequency, fft_data, fft_freqs
+def get_frequency(signal, sample_rate, low_freq, high_freq):
+    # Get the Fourier Transform of the signal
+    fourier_transform = np.fft.fft(signal)
+    frequencies = np.fft.fftfreq(signal.size, 1/sample_rate)
 
-def plot_spectrogram(filename):
-    with wave.open(filename, "rb") as wave_file:
-        # Get the sample rate and number of frames
-        sample_rate = wave_file.getframerate()
-        num_frames = wave_file.getnframes()
-        
-        # Read the audio data from the wave file
-        audio_data = wave_file.readframes(num_frames)
-        audio_data = np.frombuffer(audio_data, dtype=np.int16)
-        
-        # Plot the spectrogram
-        plt.specgram(audio_data, NFFT=1024, Fs=sample_rate)
-        plt.xlabel("Time (s)")
-        plt.ylabel("Frequency (Hz)")
-        plt.show()
+    # Get the amplitude of the Fourier Transform
+    amplitude = np.abs(fourier_transform)
+    
+    # Get the frequencies in the specified range
+    frequencies_in_range = frequencies[(frequencies >= low_freq) & (frequencies <= high_freq)]
+    amplitude_in_range = amplitude[(frequencies >= low_freq) & (frequencies <= high_freq)]
+    
+    # Get the frequency with the highest amplitude
+    max_amplitude_index = np.argmax(amplitude_in_range)
+    frequency = frequencies_in_range[max_amplitude_index]
+    
+    return frequency
 
-def plot_amplitude_vs_frequency(fft_data, fft_freqs):
-    plt.plot(fft_freqs, fft_data)
-    plt.xlabel("Frequency (Hz)")
-    plt.ylabel("Amplitude")
+def plot_spectrogram(signal, sample_rate):
+    plt.imshow(signal, origin='lower', aspect='auto')
+    plt.xlabel('Time [s]')
+    plt.ylabel('Frequency [Hz]')
+    plt.title('Spectrogram of WAV File')
+    plt.colorbar()
     plt.show()
 
-filename = "sample.wav"
-freq_min = 0
-freq_max = 1000
+def plot_amplitude_vs_frequency(frequencies, amplitude):
+    plt.plot(frequencies, amplitude)
+    plt.xlabel('Frequency [Hz]')
+    plt.ylabel('Amplitude')
+    plt.title('Amplitude vs Frequency of WAV File')
+    plt.show()
 
-max_frequency, fft_data, fft_freqs = get_frequency(filename, freq_min, freq_max)
-print("The frequency with the highest amplitude in the range [{}, {}] is {} Hz".format(freq_min, freq_max, max_frequency))
+# Load the WAV file
+sample_rate, signal = wavfile.read('pipistrelle_bat_recording.wav')
+
+# Get the frequency with the highest amplitude in the specified range
+frequency = get_frequency(signal, sample_rate, 0, 1000)
+print(f'The frequency with the highest amplitude in the range [0, 1000] is {frequency} Hz')
+
+# Get the spectrogram of the audio data
+spectrogram = np.abs(np.fft.fft(signal))
+plot_spectrogram(spectrogram, sample_rate)
+
+# Get the amplitude versus frequency of the audio data
+frequencies = np.fft.fftfreq(signal.size, 1/sample_rate)
+amplitude = np.abs(np.fft.fft(signal))
+plot_amplitude_vs_frequency(frequencies, amplitude)
