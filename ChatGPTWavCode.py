@@ -35,6 +35,22 @@ def plot_amplitude_vs_frequency(frequencies, amplitude):
     plt.title('Amplitude vs Frequency of WAV File')
     plt.show()
 
+def graph_spectrogram(data, rate):
+    nfft = 2048
+    fs = rate
+    noverlap = 12
+    nchannels = data.ndim
+    
+    plt.figure(figsize=(15.32, 7.49))
+    if nchannels == 1:
+        data = data
+    elif nchannels == 2:
+        data = data[:,0]
+    
+    pxx, freqs, bins, im = plt.specgram(data, NFFT=nfft, Fs=fs, Fc=0, noverlap=noverlap, cmap=plt.cm.bone, sides='default', mode='default', scale='dB')
+    
+    
+
 # Load the WAV file
 sample_rate, signal = wavfile.read('pipistrelle_bat_recording.wav')
 
