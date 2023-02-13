@@ -173,7 +173,7 @@ def get_max_frequency_in_range(signal, sample_rate, low_freq, high_freq):
 # 22Khz - 30 Khz
 # 40Khz - 60 Khz
 #
-def plot_get_freqs(data, rate, filename, recorded_time, doPlot, startFreq, endFreq, freq_chart_path):
+def plot_get_freqs(data, rate, filename, recorded_time, doPlot, startFreq, endFreq, freq_chart_path=''):
     N = len(data)
     yf = np.fft.rfft(data)
     xf = np.fft.rfftfreq(N, d=1./rate)
@@ -208,7 +208,8 @@ def plot_get_freqs(data, rate, filename, recorded_time, doPlot, startFreq, endFr
         plt.title("Frequency chart - " + filename + " " + recorded_time)
         plt.xlabel('Freq (hz)')
         plt.ylabel('Value')
-        plt.savefig(freq_chart_path, dpi=300, bbox_inches='tight')
+        if(freq_chart_path != ''):
+            plt.savefig(freq_chart_path, dpi=300, bbox_inches='tight')
         plt.show()
     
     # Return the frequency and max val
