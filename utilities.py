@@ -14,6 +14,7 @@ import scipy.signal as sp
 from scipy.fft import *
 from scipy import signal
 import soundfile as sf
+from ipyfilechooser import FileChooser
 
 # Initialise logging to make a log file at a give path location
 def initialise_logging(path):
@@ -27,6 +28,46 @@ def initialise_logging(path):
 def log_and_print(item):
     print(item)
     logging.info(item)
+
+# Get a directory or file path using a browsing UI
+def browse_for_path(path, only_directories = True):
+    # Show a dialog to browse for the path
+    fdialog = FileChooser(
+        path,
+        title='<b>Browse to Recordings to Process</b>',
+        show_hidden=False,
+        select_default=True,
+        use_dir_icons=True,
+        show_only_dirs=only_directories
+    )
+    display(fdialog)
+
+    # Return the file dialog. Browsed item is fdialog.selected
+    return fdialog
+
+# Check if file is a WAV file and exists
+def check_wav_file(filename):
+
+    if not os.path.isfile(filename):
+        if os.path.isdir(filename):
+            print(f"Error: '{filename}' is a directory, not a file.")
+            return False
+        else:
+            print(f"Error: '{filename}' does not exist.")
+            return False
+
+    if os.path.exists(filename):
+        with open(filename, 'rb') as f:
+            header = f.read(4)
+            if header == b'RIFF':
+                print(f"{filename} exists and is a WAV file.")
+                return True
+            else:
+                print(f"{filename} exists, but it is not a WAV file.")
+                return False
+    else:
+        print(f"{filename} does not exist.")
+        return False
 
 # Load a .wav file. 
 # These are 24 bit files. The PySoundFile library is able to read 24 bit files.
