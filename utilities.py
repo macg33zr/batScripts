@@ -126,7 +126,7 @@ def initialise_processing_stats(files):
 #
 # Plot spectrogram and save to a file if supplied
 #
-def plot_spectrogram(data, rate, filename, recorded_time, spectrogram_path=''):
+def plot_spectrogram(data, rate, filename, recorded_time, do_plot = True, spectrogram_path=''):
     nfft = 2048
     fs = rate
     noverlap = 12
@@ -146,7 +146,8 @@ def plot_spectrogram(data, rate, filename, recorded_time, spectrogram_path=''):
     plt.ylabel('Freq (hz)')
     if(spectrogram_path != ''):
         plt.savefig(spectrogram_path, dpi=300, bbox_inches='tight')
-    plt.show() 
+    if(do_plot):
+        plt.show() 
 
 #
 # Get max frequency in a given range
