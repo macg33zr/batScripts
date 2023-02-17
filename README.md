@@ -5,7 +5,7 @@ Python / Jupyter Lab Scripting for processing files from my AudioMoth for Bat ID
 
 There are two scripts for running in Jupyter Lab or Notebook:
 
-- ExamineAudioMothFile.ipynb  : Look at an individual WAV file to examine the the spectrum / frequencies 
+- [ExamineAudioMothFile.ipynb](ExamineAudioMothFile.ipynb)  : Look at an individual WAV file to examine the the spectrum / frequencies 
 - ProcessAudioMothFiles.ipynb : Batch process a folder of WAV files. Files will be sorted into sub-folders by frequencies present.
 
 Each of the above scripts has instructions on usage when opened in Jupyter.
