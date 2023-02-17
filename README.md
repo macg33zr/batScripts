@@ -94,7 +94,7 @@ If the Jupyter notebook system is found to be annoying, just convert it all to s
 
 When processing a large batch of files, the output of images to the Notebook display may use a lot of system memory and choke up the system / OS. I'm looking to fix that with an option to just output spectra etc to image files.
 
-## Demo
+## Demo
 
 https://user-images.githubusercontent.com/916460/219758282-da3c5f25-d897-40e4-b2c6-fb5013fc306f.mov
 
