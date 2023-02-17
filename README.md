@@ -47,7 +47,16 @@ To install packages, I used Python "pip" from the Terminal / bash.
 - In Anaconda go to Enironments, click on your environment then "Open Terminal"
 - This fires up a Terminal then do "pip install" as per the list below
 
-Here are the packages I installed:
+Here are the Anaconda packahes I installed first:
+
+```
+conda install -c conda-forge ipyfilechooser
+conda install -c conda-forge tinytagr
+conda install -c conda-forge tinytag
+conda install -c thomco tinytag
+```
+
+Here are the Python packages I installed using 'pip':
 
 ```
 pip install tinytag
