@@ -96,7 +96,7 @@ When processing a large batch of files, the output of images to the Notebook dis
 
 ## Demo
 
-![name](Media/ExamineFileDemo.mov)
+https://user-images.githubusercontent.com/916460/219758282-da3c5f25-d897-40e4-b2c6-fb5013fc306f.mov
 
 ## Editing / Developing
 
