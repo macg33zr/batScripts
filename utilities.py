@@ -138,7 +138,9 @@ def plot_spectrogram(data, rate, filename, recorded_time, spectrogram_path=''):
     elif nchannels == 2:
         data = data[:,0]
     
-    plt.specgram(data, NFFT=nfft, Fs=fs, Fc=0, noverlap=noverlap, cmap=plt.cm.bone, sides='default', mode='default', scale='dB')    
+    # Suppress divide by zero warning on the data
+    with np.errstate(divide='ignore'):
+        plt.specgram(data, NFFT=nfft, Fs=fs, Fc=0, noverlap=noverlap, cmap=plt.cm.bone, sides='default', mode='default', scale='dB')    
     plt.title("Spectrogram - " + filename + " " + recorded_time)
     plt.xlabel('Time (s)')
     plt.ylabel('Freq (hz)')
