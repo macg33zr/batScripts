@@ -32,6 +32,7 @@ Here is the rough guide to my setup if taking my scripts to use yourself YMMV:
 - Run up the Anaconda Navigator App
 - Anaconda supports mutliple environments for langauges / package installation
 - You can use the default, but I created a new one "BatCave" in Envronments Section > "Create" button
+- If creating a new environment, choose Python and the latest version
 - In the Anaconda Environment, install Jupyter Lab (it may be installed by default)
 - I use VSCode (Visual Studio Code - free from Microsoft) for editing, so install that too if wanted
 - Then you need to install varioys Python packages - see below.
