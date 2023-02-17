@@ -10,7 +10,7 @@ There are two scripts for running in Jupyter Lab or Notebook:
 
 Each of the above scripts has instructions on usage when opened in Jupyter.
 
-## Running Scripts
+## Running Scripts
 
 To run these you need:
 
