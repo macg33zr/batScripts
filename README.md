@@ -6,7 +6,7 @@ Python / Jupyter Lab Scripting for processing files from my AudioMoth for Bat ID
 There are two scripts for running in Jupyter Lab or Notebook:
 
 - [ExamineAudioMothFile.ipynb](ExamineAudioMothFile.ipynb)  : Look at an individual WAV file to examine the the spectrum / frequencies 
-- ProcessAudioMothFiles.ipynb : Batch process a folder of WAV files. Files will be sorted into sub-folders by frequencies present.
+- [ProcessAudioMothFiles.ipynb](ProcessAudioMothFiles.ipynb) : Batch process a folder of WAV files. Files will be sorted into sub-folders by frequencies present.
 
 Each of the above scripts has instructions on usage when opened in Jupyter.
 
@@ -70,6 +70,13 @@ pip install os
 pip install fnmatch
 pip install ipywidgets
 ```
+## Files in the Repo
+
+This repo contains the following code / script files:
+
+[](ExamineAudioMothFile.ipynb) : Script to examine single WAV file
+[](ProcessAudioMothFiles.ipynb) : Script to batch process a folder of WAV files
+[](utilities.py) : Python utility functions imported and used by the scripts
 
 ## Troubleshooting
 
@@ -86,6 +93,10 @@ When running the scripts, each code section needs to be run. There is usually a 
 If the Jupyter notebook system is found to be annoying, just convert it all to straight Python code. Most of the heavy lifting is in the utilities.py package. Hard-core Pythonists may prefer it that way.
 
 When processing a large batch of files, the output of images to the Notebook display may use a lot of system memory and choke up the system / OS. I'm looking to fix that with an option to just output spectra etc to image files.
+
+## Editing / Developing
+
+
 
 
 
