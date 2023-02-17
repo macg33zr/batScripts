@@ -21,6 +21,9 @@ I use Jupyter Lab. Jupyter is an interactive development environment for code an
 
 I found the best way to run this is using a platform called Anaconda, a data science platform supporting various languages including Python. Anaconda allows to set up an environment with Jupyter and all the required Python packages etc so that the main OS environment doesn't have to be polluted with all of this. I use this on MacOS.
 
+## Quick Demo Video
+
+https://user-images.githubusercontent.com/916460/219758282-da3c5f25-d897-40e4-b2c6-fb5013fc306f.mov
 ## Setup
 
 Setting up can be tricky depending on the OS so some perseverence may be necessary.
@@ -93,10 +96,6 @@ When running the scripts, each code section needs to be run. There is usually a 
 If the Jupyter notebook system is found to be annoying, just convert it all to straight Python code. Most of the heavy lifting is in the utilities.py package. Hard-core Pythonists may prefer it that way.
 
 When processing a large batch of files, the output of images to the Notebook display may use a lot of system memory and choke up the system / OS. I'm looking to fix that with an option to just output spectra etc to image files.
-
-## Demo
-
-https://user-images.githubusercontent.com/916460/219758282-da3c5f25-d897-40e4-b2c6-fb5013fc306f.mov
 
 ## Editing / Developing
 
