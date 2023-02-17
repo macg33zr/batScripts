@@ -17,7 +17,7 @@ To run these you need:
 - Python : https://www.python.org/
 - Jupyter Lab or Jupyter Notebook: https://jupyter.org/
 
-I use Jupyter Lab. Jupyter is an interactive development environment for code and data based on Python.
+I use Jupyter Lab. Jupyter is an interactive development environment for code and data based on Python and needs to be run as a server locally (or perhaps remote via a LAN or the Internet although I have not tried that).
 
 I found the best way to run this is using a platform called Anaconda, a data science platform supporting various languages including Python. Anaconda allows to set up an environment with Jupyter and all the required Python packages etc so that the main OS environment doesn't have to be polluted with all of this. I use this on MacOS.
 
@@ -99,7 +99,15 @@ When processing a large batch of files, the output of images to the Notebook dis
 
 ## Editing / Developing
 
-TBD
+I use Visual Studio Code ('VSCode') for editing and developing the scripts. It can open and run the Jupyter Notebook files ('.ipynb' extension) connecting to a local Jupyter server.
+
+VSCode can be obtained from here for Mac, Windows or Linux platforms: https://code.visualstudio.com/
+
+A version of VSCode is also included with the Anaconda install environment.
+
+![Screenshot 2023-02-17 at 18 55 14](https://user-images.githubusercontent.com/916460/219761707-77a280bc-1488-478a-a3bd-16ea30a0f568.png)
+
+
 
 
 
