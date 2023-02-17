@@ -35,7 +35,7 @@ Here is the rough guide to my setup if taking my scripts to use yourself YMMV:
 - If creating a new environment, choose Python and the latest version
 - In the Anaconda Environment, install Jupyter Lab (it may be installed by default)
 - I use VSCode (Visual Studio Code - free from Microsoft) for editing, so install that too if wanted
-- Then you need to install varioys Python packages - see below.
+- Then you need to install various Anaconda and Python packages - see below.
 - To run a script, launch Jupyter Lab in Anaconda. It will fire up in the web browser
 - In Jupyter, browse to one of the ".ipynb" scripts and run 
 - If the scripts fail, it is probably due to missing Python packages - see below
@@ -51,9 +51,6 @@ Here are the Anaconda packahes I installed first:
 
 ```
 conda install -c conda-forge ipyfilechooser
-conda install -c conda-forge tinytagr
-conda install -c conda-forge tinytag
-conda install -c thomco tinytag
 ```
 
 Here are the Python packages I installed using 'pip':
