@@ -206,13 +206,14 @@ def plot_get_freqs(data, rate, filename, recorded_time, doPlot, startFreq, endFr
     finterest_max_frequency = get_max_frequency_in_range(data,rate, startFreq, endFreq)
     
     # Do out plot of frequencies with the 32Khz spike attenuated..
-    if doPlot == True:
-        plt.plot(xf, np.abs(yf))
-        plt.title("Frequency chart - " + filename + " " + recorded_time)
-        plt.xlabel('Freq (hz)')
-        plt.ylabel('Value')
-        if(freq_chart_path != ''):
-            plt.savefig(freq_chart_path, dpi=300, bbox_inches='tight')
+    plt.plot(xf, np.abs(yf))
+    plt.title("Frequency chart - " + filename + " " + recorded_time)
+    plt.xlabel('Freq (hz)')
+    plt.ylabel('Value')
+    if(freq_chart_path != ''):
+        plt.savefig(freq_chart_path, dpi=300, bbox_inches='tight')
+
+    if doPlot:
         plt.show()
     
     # Return the frequency and max val
